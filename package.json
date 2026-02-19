@@ -1,6 +1,28 @@
 {
   "devDependencies": {
-    "@types/node": "^25.2.3",
+    "@types/node": "^25.3.0",
     "typescript": "^5.9.3"
-  }
+  },
+  "name": "laboratorio2_biblioteca",
+  "version": "1.0.0",
+  "description": "Repositorio para desarrollo de proyecto escolar de Typescript",
+  "main": "index.js",
+  "dependencies": {
+    "undici-types": "^7.16.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lordheca/Laboratorio_2_Administracion_Libreria.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Lordheca/Laboratorio_2_Administracion_Libreria/issues"
+  },
+  "homepage": "https://github.com/Lordheca/Laboratorio_2_Administracion_Libreria#readme"
 }
