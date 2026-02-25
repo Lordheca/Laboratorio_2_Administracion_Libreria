@@ -1,7 +1,10 @@
 import { 
+    I_Usuario,
     I_Libro, 
     Categoria_Libro, 
-    Estado_Libro 
+    Estado_Libro, 
+    I_Prestamo,
+    Estado_Prestamo
 } from "./Interfaces";
 
 export class Libro implements I_Libro {
@@ -89,5 +92,62 @@ export class Libro implements I_Libro {
         Copias: ${this._Copias_Disponibles}/${this.Copias_Totales}
         Estado: ${Estado_Libro[this.Estado_Actual]}
                 `;
+    }
+}
+
+export class Prestamo implements I_Prestamo {
+    //? Variables
+    readonly Id : number;
+    Usuario : I_Usuario;
+    Libro : I_Libro;
+    Fecha_Prestamo : Date;
+    Fecha_Esperada_Devolucion : Date;
+    Fecha_Real_Devolucion? : Date;
+    private _Estado_Prestamo : Estado_Prestamo;
+
+    constructor(id: number, usuario: I_Usuario, libro: I_Libro, diasPrestamo: number = 14) {
+        this.Id = id;
+        this.Usuario = usuario;
+        this.Libro = libro;
+        this.Fecha_Prestamo = new Date();
+        this.Fecha_Esperada_Devolucion = new Date(this.Fecha_Prestamo);
+        this.Fecha_Esperada_Devolucion.setDate(this.Fecha_Prestamo.getDate() + diasPrestamo);
+        this._Estado_Prestamo = Estado_Prestamo.Activo;
+    }
+
+    //* Getter que actualiza el estado antes de devolverlo
+    get Estado_Prestamo(): Estado_Prestamo {
+        this.Actualizar_Estado();
+        return this._Estado_Prestamo;
+    }
+
+    private Actualizar_Estado(): void {
+        const Fecha_Actual = new Date();
+        if (this._Estado_Prestamo != Estado_Prestamo.Devuelto && Fecha_Actual > this.Fecha_Esperada_Devolucion){
+            this._Estado_Prestamo = Estado_Prestamo.Vencido   
+        }
+    }
+
+    public Realizar_Devolucion(): void {
+        this.Fecha_Real_Devolucion = new Date();
+        this._Estado_Prestamo = Estado_Prestamo.Devuelto;
+    }
+
+    public Dias_Retraso(): number {
+        //* Usar fecha real de dveolucion o la fecha de hoy de ser necesario
+        const Fecha_Final = this.Fecha_Real_Devolucion || new Date();
+        const dif_ms = Fecha_Final.getTime() - this.Fecha_Esperada_Devolucion.getTime();
+        const dias= Math.ceil(dif_ms / (1000*60*60*24)); //? Obtener dias de diferencia
+        return dias > 0 ? dias : 0 //? Regresa 0 si el libro de entrego a tiempo o temprano
+    }
+
+    public Calcular_Multa(tarifaDiaria: number = 10): number {
+        return this.Dias_Retraso() * tarifaDiaria;
+    }
+
+    public Obtener_Informacion(): string {
+        const multa = this.Calcular_Multa();
+        const estado = this.Estado_Prestamo; 
+        return `Préstamo #${this.Id} | Estado: ${estado} | Multa: ${multa}`;
     }
 }
