@@ -4,8 +4,77 @@ import {
     Categoria_Libro, 
     Estado_Libro, 
     I_Prestamo,
-    Estado_Prestamo
+    Estado_Prestamo,
+    Tipo_Usuario
 } from "./Interfaces";
+
+export class Usuario implements I_Usuario {
+
+    // readonly obligatorio por interfaz
+    readonly Id: number;
+
+    //privado obligatorio por modificadores
+        private _Nombre : string;
+        private _Email : string;
+        
+        Tipo_Usuario : Tipo_Usuario;
+        Fecha_Registro : Date;
+        Contador_Prestamos_Activos : number;
+
+    constructor(id: number, nombre: string, email: string, tipoUsuario: Tipo_Usuario) {
+        this.Id = id;
+        this._Nombre = nombre;
+        this._Email = email;
+        this.Tipo_Usuario = tipoUsuario;
+
+        //inicializar fecha y contador
+        this.Fecha_Registro = new Date();
+        this.Contador_Prestamos_Activos = 0;
+    }
+
+    // Getters
+    get Nombre(): string {
+        if(this._Nombre.length < 3){
+            throw new Error("El nombre debe tener al menos 3 caracteres");
+        }
+        return this._Nombre;
+    }
+
+    get Email(): string {
+        return this._Email;
+    }
+
+    set Email(nuevoEmail: string) {
+
+        //expresion regular basica para validar formato de email
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(nuevoEmail)) {
+            throw new Error("El formato del email no es válido.");
+        }
+        this._Email = nuevoEmail;
+    }
+
+    //Metodo para obtener informacion - retornar cadena en formato "Usuario #[id]: [nombre] ([tipo]) - [email]"
+    Obtener_Informacion(): string {
+        return `Usuario #${this.Id}: ${this.Nombre} (${Tipo_Usuario[this.Tipo_Usuario]}) - ${this.Email}`;
+    }
+
+
+    //Metodo para prestamo segun el tipo de usuario
+    puedeRealizarPrestamo(): boolean {
+        const limites: Record<Tipo_Usuario, number> = {
+            [Tipo_Usuario.Estudiante]: 3,
+            [Tipo_Usuario.Profesor]: 5,
+            [Tipo_Usuario.Administrador]: 10
+        };
+
+        const limiteMaximo = limites[this.Tipo_Usuario];
+        return this.Contador_Prestamos_Activos < limiteMaximo;
+    }
+
+    //prestamo por usuario
+ }  //fin del usuarios 
+
 
 export class Libro implements I_Libro {
 
