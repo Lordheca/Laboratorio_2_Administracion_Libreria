@@ -68,5 +68,5 @@ Asegúrate de tener instalado lo siguiente:
 ├── package.json        # Dependencias y scripts del proyecto
 ├── tsconfig.json       # Configuración del compilador TypeScript
 └── README.md           # Documentación del proyecto
-|__ Decisiones y aprendizaje.docx #Documento sobre decisiones de diseño y aprendizajes del laboratorio
+|__ Decisiones y aprendizaje.pdf #Documento sobre decisiones de diseño y aprendizajes del laboratorio
 
