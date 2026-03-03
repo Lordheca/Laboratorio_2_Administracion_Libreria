@@ -3,7 +3,7 @@
 export enum Tipo_Usuario {Estudiante, Profesor,Administrador} //? Enumeracion: Es una serie de constantes que alojan un valor numerico 0....n
 export enum Categoria_Libro {Ficcion, No_Ficcion, Ciencia, Tecnologia,Historia,Arte}
 export enum Estado_Libro {Disponible, Prestado, Reservado, Mantenimiento}
-export enum Estado_Prestamo {Activo, Devuelto, Vencido}
+export enum Estado_Prestamo {Activo = "Activo", Devuelto="Devuelto", Vencido="Vencido"}
 
 export interface I_Usuario {
     readonly Id : number;

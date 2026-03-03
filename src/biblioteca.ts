@@ -133,9 +133,9 @@ import {
         const Profesores = Usuarios_Arr.filter(u => u.Tipo_Usuario === Tipo_Usuario.Profesor).length;
         const Admins = Usuarios_Arr.filter(u => u.Tipo_Usuario === Tipo_Usuario.Administrador).length;
 
-        //? Copias Presatdas y Dispo
-        const Total_Copias_Disponibles = Libros_Arr.reduce((acc,Libro) => acc = Libro.Copias_Disponibles,0);
-        const Total_Copias_Existentes = Libros_Arr.reduce((acc,Libro) => acc = Libro.Copias_Totales,0);
+        //? Copias Prestadas y Dispo
+        const Total_Copias_Disponibles = Libros_Arr.reduce((acc,Libro) => acc + Libro.Copias_Disponibles,0);
+        const Total_Copias_Existentes = Libros_Arr.reduce((acc,Libro) => acc + Libro.Copias_Totales,0);
         const Total_Copias_Prestadas = Total_Copias_Existentes - Total_Copias_Disponibles;  
 
         //? Prestamos

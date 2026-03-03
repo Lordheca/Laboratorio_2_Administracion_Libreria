@@ -98,11 +98,11 @@ function main(): void {
     const p1 = biblioteca.Realizar_Prestamo(u1.Id, "9780001");
     const p2 = biblioteca.Realizar_Prestamo(u2.Id, "9780002");
     const p3 = biblioteca.Realizar_Prestamo(u1.Id, "9780002");
+    
 
     if (p1) console.log(p1.Obtener_Informacion());
     if (p2) console.log(p2.Obtener_Informacion());
     if (p3) console.log(p3.Obtener_Informacion());
-
 
     // ==============================
     // DEVOLUCIONES

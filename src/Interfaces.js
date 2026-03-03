@@ -26,7 +26,7 @@ var Estado_Libro;
 })(Estado_Libro || (exports.Estado_Libro = Estado_Libro = {}));
 var Estado_Prestamo;
 (function (Estado_Prestamo) {
-    Estado_Prestamo[Estado_Prestamo["Activo"] = 0] = "Activo";
-    Estado_Prestamo[Estado_Prestamo["Devuelto"] = 1] = "Devuelto";
-    Estado_Prestamo[Estado_Prestamo["Vencido"] = 2] = "Vencido";
+    Estado_Prestamo["Activo"] = "Activo";
+    Estado_Prestamo["Devuelto"] = "Devuelto";
+    Estado_Prestamo["Vencido"] = "Vencido";
 })(Estado_Prestamo || (exports.Estado_Prestamo = Estado_Prestamo = {}));

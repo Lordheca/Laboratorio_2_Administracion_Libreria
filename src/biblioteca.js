@@ -102,9 +102,9 @@ var Biblioteca = /** @class */ (function () {
         var Estudiantes = Usuarios_Arr.filter(function (u) { return u.Tipo_Usuario === Interfaces_1.Tipo_Usuario.Estudiante; }).length;
         var Profesores = Usuarios_Arr.filter(function (u) { return u.Tipo_Usuario === Interfaces_1.Tipo_Usuario.Profesor; }).length;
         var Admins = Usuarios_Arr.filter(function (u) { return u.Tipo_Usuario === Interfaces_1.Tipo_Usuario.Administrador; }).length;
-        //? Copias Presatdas y Dispo
-        var Total_Copias_Disponibles = Libros_Arr.reduce(function (acc, Libro) { return acc = Libro.Copias_Disponibles; }, 0);
-        var Total_Copias_Existentes = Libros_Arr.reduce(function (acc, Libro) { return acc = Libro.Copias_Totales; }, 0);
+        //? Copias Prestadas y Dispo
+        var Total_Copias_Disponibles = Libros_Arr.reduce(function (acc, Libro) { return acc + Libro.Copias_Disponibles; }, 0);
+        var Total_Copias_Existentes = Libros_Arr.reduce(function (acc, Libro) { return acc + Libro.Copias_Totales; }, 0);
         var Total_Copias_Prestadas = Total_Copias_Existentes - Total_Copias_Disponibles;
         //? Prestamos
         var Activos = Prestamos_Arr.filter(function (p) { return p.Estado_Prestamo === Interfaces_1.Estado_Prestamo.Activo; }).length;
@@ -118,7 +118,7 @@ var Biblioteca = /** @class */ (function () {
         var Tasa_Uso = Total_Libros > 0 ? (Total_Prestamos / Total_Libros) * 100 : 0;
         var Promedio_Prestamos = Total_Usuarios > 0 ? (Total_Prestamos / Total_Usuarios) : 0;
         //? Formato del Reporte
-        console.log(" REPORTE GENERAL:\n        \n        USUARIOS:\n        ==========================================\n        \u2022 Estudiantes:   ".concat(Estudiantes, "\n        \u2022 Profesores:    ").concat(Profesores, "\n        \u2022 Administradores: ").concat(Admins, "\n        \u2022 TOTAL:         ").concat(Total_Usuarios, "\n\n        LIBROS:\n        ==========================================\n        \u2022 T\u00EDtulos en cat\u00E1logo: ").concat(Total_Libros, "\n        \u2022 Copias Disponibles:  ").concat(Total_Copias_Disponibles, " \n        \u2022 Copias Prestadas:    ").concat(Total_Copias_Prestadas, " \n        \u2022 Total:               ").concat(Total_Copias_Existentes, "\n\n        PRESTAMOS:\n        ==========================================\n        \u2022 Activos:   ").concat(Activos, " \u23F3\n        \u2022 Devueltos: ").concat(Devueltos, " \u2705\n        \u2022 Vencidos:  ").concat(Vencidos, " \u26A0\uFE0F\n        \u2022 TOTAL:     ").concat(Total_Prestamos, "\n\n        INDICADORES\n        ==========================================\n        \u2022 Tasa de Uso:          ").concat(Tasa_Uso.toFixed(2), "%\n        \u2022 Promedio Pr\u00E9stamos/U: ").concat(Promedio_Prestamos.toFixed(1), "\n        "));
+        console.log(" REPORTE GENERAL:\n        \n        USUARIOS:\n        ==========================================\n        \u2022 Estudiantes:   ".concat(Estudiantes, "\n        \u2022 Profesores:    ").concat(Profesores, "\n        \u2022 Administradores: ").concat(Admins, "\n        \u2022 TOTAL:         ").concat(Total_Usuarios, "\n\n        LIBROS:\n        ==========================================\n        \u2022 T\u00EDtulos en cat\u00E1logo: ").concat(Total_Libros, "\n        \u2022 Copias Disponibles:  ").concat(Total_Copias_Disponibles, " \n        \u2022 Copias Prestadas:    ").concat(Total_Copias_Prestadas, " \n        \u2022 Total:               ").concat(Total_Copias_Existentes, "\n\n        PRESTAMOS:\n        ==========================================\n        \u2022 Activos:   ").concat(Activos, "\n        \u2022 Devueltos: ").concat(Devueltos, "\n        \u2022 Vencidos:  ").concat(Vencidos, " \n        \u2022 TOTAL:     ").concat(Total_Prestamos, "\n\n        INDICADORES\n        ==========================================\n        \u2022 Tasa de Uso:          ").concat(Tasa_Uso.toFixed(2), "%\n        \u2022 Promedio Pr\u00E9stamos/U: ").concat(Promedio_Prestamos.toFixed(1), "\n        "));
     };
     return Biblioteca;
 }());
