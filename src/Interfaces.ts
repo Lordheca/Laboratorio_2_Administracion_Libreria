@@ -12,6 +12,8 @@ export interface I_Usuario {
     Tipo_Usuario : Tipo_Usuario;
     Fecha_Registro : Date;
     Contador_Prestamos_Activos : number;
+    Obtener_Informacion(): string;
+    puedeRealizarPrestamo(): boolean ;
 }
 
 export interface I_Libro{
@@ -24,7 +26,10 @@ export interface I_Libro{
     Copias_Totales : number;
     Estado_Actual : Estado_Libro;
 
+    estaDisponible(): boolean;
+    prestarCopia(): boolean;
     devolverCopia(): void;
+    obtenerInformacion(): string;
 }
 
 export interface I_Prestamo{
@@ -34,5 +39,10 @@ export interface I_Prestamo{
     Fecha_Prestamo : Date;
     Fecha_Esperada_Devolucion : Date;
     Fecha_Real_Devolucion? : Date;
-    Estado_Prestamo : Estado_Prestamo
+    Estado_Prestamo : Estado_Prestamo;
+
+    Realizar_Devolucion(): void;
+    Dias_Retraso(): number;
+    Calcular_Multa(tarifaDiaria?: number): number;
+    Obtener_Informacion(): string;
 }
