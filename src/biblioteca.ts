@@ -171,9 +171,9 @@ import {
 
         PRESTAMOS:
         ==========================================
-        • Activos:   ${Activos} ⏳
-        • Devueltos: ${Devueltos} ✅
-        • Vencidos:  ${Vencidos} ⚠️
+        • Activos:   ${Activos}
+        • Devueltos: ${Devueltos}
+        • Vencidos:  ${Vencidos} 
         • TOTAL:     ${Total_Prestamos}
 
         INDICADORES
