@@ -23,6 +23,8 @@ export interface I_Libro{
     Copias_Disponibles : number;
     Copias_Totales : number;
     Estado_Actual : Estado_Libro;
+
+    devolverCopia(): void;
 }
 
 export interface I_Prestamo{
