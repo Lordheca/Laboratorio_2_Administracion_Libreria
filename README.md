@@ -1,15 +1,22 @@
-#  Laboratorio_2_Administracion_Libreria
+# Laboratorio Práctico: Sistema de Gestión de Biblioteca Digital
 
-Un sistema modular desarrollado en TypeScript para la gestión de usuarios, libros y préstamos en una biblioteca. 
-## Características Principales
+Un sistema modular desarrollado en TypeScript para la gestión de usuarios, libros y préstamos en una biblioteca. Este proyecto demuestra el uso de Programación Orientada a Objetos (POO), interfaces, tipos avanzados y modificadores de acceso.
 
-* **Gestión de Usuarios:** Registro con validación estricta de formato de correo electrónico y longitud de nombres.
+## 🌟 Características Principales
+
+* **Gestión de Usuarios:** Registro de Estudiantes, Profesores y Administradores con validación estricta de formato de correo electrónico y longitud de nombres.
 * **Control de Inventario:** Administración del estado de los libros (Disponible, Prestado, Reservado, Mantenimiento) y seguimiento de copias en tiempo real.
 * **Sistema de Préstamos:**
-    * Límites dinámicos basados en el perfil del usuario (Estudiante , Profesor , Administrador).
+    * Límites dinámicos basados en el perfil del usuario (Estudiante: 3, Profesor: 5, Administrador: 10).
     * Cálculo automático de fechas de vencimiento, días de retraso y multas.
-    * 
-  ## 🛠️ Tecnologías
+* **Reportes:** Generación de estadísticas generales, libros más prestados y reportes de préstamos activos/vencidos usando Template Strings.
+
+## 🛠️ Tecnologías
+
+* **TypeScript**
+* **Node.js** (Uso de `@types/node` para tipado estricto)
+
+## 🛠️ Tecnologías
 
 * **TypeScript**
 * **Node.js**
@@ -35,18 +42,29 @@ Asegúrate de tener instalado lo siguiente:
     ```
 
 2.  **Instala las dependencias**
+   (Nota: Si ya clonaste el proyecto completo, un simple npm install ejecutará esto automáticamente basado en el package.json).
     ```bash
-    npm install
+    npm install --save-dev typescript @types/node
     ```
 
-3.  **Compila el código TypeScript a JavaScript:**
+4.  **Compila el código TypeScript a JavaScript:**
     ```bash
     tsc
     ```
-4.  **Ejecuta el programa:**
+5.  **Ejecuta el programa:**
     ```bash
     node main.js
     ```
 
+## 📂 Estructura del Proyecto
 
+```text
+├── src/
+│   ├── biblioteca.ts   # Lógica central del sistema de la biblioteca
+│   ├── clases.ts       # Implementación de las clases (Libro, Prestamo, Usuario)
+│   ├── Interfaces.ts   # Enums y contratos del sistema
+│   └── main.ts         # Punto de entrada principal y pruebas de ejecución
+├── package.json        # Dependencias y scripts del proyecto
+├── tsconfig.json       # Configuración del compilador TypeScript
+└── README.md           # Documentación del proyecto
 
