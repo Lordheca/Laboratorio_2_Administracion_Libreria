@@ -53,6 +53,7 @@ Asegúrate de tener instalado lo siguiente:
     ```
 5.  **Ejecuta el programa:**
     ```bash
+    Nota: Asegurarse de encontrarse dentro de la carpeta 'src' mediante 'cd'
     node main.js
     ```
 
@@ -67,4 +68,5 @@ Asegúrate de tener instalado lo siguiente:
 ├── package.json        # Dependencias y scripts del proyecto
 ├── tsconfig.json       # Configuración del compilador TypeScript
 └── README.md           # Documentación del proyecto
+|__ Decisiones y aprendizaje.docx #Documento sobre decisiones de diseño y aprendizajes del laboratorio
 
