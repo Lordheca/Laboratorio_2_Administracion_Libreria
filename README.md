@@ -13,7 +13,7 @@ Un sistema modular desarrollado en TypeScript para la gestión de usuarios, libr
 
 * **TypeScript**
 * **Node.js**
-*
+  
 ## 🚀 Quick Start
 
 Sigue estos pasos para poner en marcha el proyecto en tu entorno local.
